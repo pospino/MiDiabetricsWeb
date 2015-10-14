@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,9 +62,9 @@
     <Content Include="BS_index.html" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="Default.html" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="index1.html" />
     <Content Include="index_.html" />
     <Content Include="ips.png" />
     <Content Include="jquery.mobile\images\ajax-loader.gif" />

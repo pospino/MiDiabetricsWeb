@@ -1,53 +1,66 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        .ui-icon-myapp-custom {
-            background: url("bitmap.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+        body {
+            padding-top: 70px;
         }
 
-        div img {
-            position: absolute;
-            left: 45%;
+        p {
+            text-align: justify;
         }
     </style>
 </head>
-
 <body>
-    <div data-role="page">
-        <div data-role="header" data-theme="b" data-position="fixed">
-            <a href="http://diabetrics.co" data-role="button" data-icon="myapp-custom">Diabetrics</a>
-            <h1>Diabetrics - DiabeTEST</h1>
-        </div>
-        <div data-role="content">
-            <div style="height: 50%">
-                <img src="logosimbolo_findrisk_D.png" /></div>
-            <div style="margin-top: 200px">
-                <br />
-                <p>
-                    El test FINDRISK es un sencillo y rápido ejercicio que cualquier persona tiene a su disposición y con el que podemos conocer que elementos, cualidades y actitudes son importantes para luchar contra la diabetes o al menos aminorar su impacto. 
-                Tan solo 8 sencillas preguntas te separan ahora mismo de saber que probabilidades tienes en el futuro de padecer diabetes.
-                </p>
-
-                <p style="font-size: smaller">No puede reemplazar un diagnóstico facultativo. Por este motivo, debería consultar con su médico el resultado obtenido.</p>
-
-                <p style="font-size: smaller">Los datos aquí obtenidos no seran utilizados para un fin distinto que un estudio sobre la población con riesgo de diabetes en nuestra empresa.</p>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only"> Toggle navigation</span>
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                </button>
+                <a class="navbar-brand" href="http://diabetrics.co">
+                      <img src="logosimbolo_findrisk_D.png" height="30" /> Diabetrics
+                </a>
             </div>
-        </div>
-        <div data-role="footer" id="footer" data-theme="b" data-position="fixed" data-fullscreen="false" data-tap-toggle="false">
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="index_.html" data-transition="turn">Continuar</a></li>
-
-                </ul>
-            </div>
+            <div class="navbar-collapse collapse">
+                <div class="navbar-form navbar-right">
+                    <a href="BS_index.html" class="btn btn-default">Ir a DiabeTEST</a>
+                    <a href="http://track.diabetrics.co/findrisk/GetDataByClient?cliente=congreso" class="btn btn-default">Descargar Datos</a>
+                </div>
+            </div><!-- /.nav-collapse -->
         </div>
     </div>
+    <div class="container">
+        <div class="jumbotron">
+
+            <div style="height: 50%; text-align:center">
+                <!--img src="ips.png" /-->
+            </div>
+
+            <br />
+            <p>
+                El test FINDRISK es un sencillo y rápido ejercicio que cualquier persona tiene a su disposición y con el que podemos conocer que elementos, cualidades y actitudes son importantes para luchar contra la diabetes o al menos aminorar su impacto.
+                Tan solo 8 sencillas preguntas te separan ahora mismo de saber que probabilidades tienes en el futuro de padecer diabetes.
+            </p>
+
+            <p style="font-size: smaller">No puede reemplazar un diagnóstico facultativo. Por este motivo, debería consultar con su médico el resultado obtenido.</p>
+
+            <p style="font-size: smaller">Los datos aquí obtenidos no seran utilizados para un fin distinto que un estudio sobre la población con riesgo de diabetes.</p>
+
+        </div>
+        <div class="btn-group btn-group-justified">
+            <a href="BS_index.html" class="btn btn-primary btn-lg ">Continuar</a>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
