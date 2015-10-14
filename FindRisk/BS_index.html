@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diabetrics - Test FindRisk</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only"> Toggle navigation</span>
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                    <span class="icon-bar"> </span>
+                </button>
+                <a class="navbar-brand" href="http://diabetrics.co">
+                    <img src="logosimbolo_findrisk_D.png" height="30" /> Diabetrics
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="navbar-form navbar-right">
+                    <a href="javascript:GO(3)" class="btn btn-default">Cancelar</a>
+
+                    <button class="btn btn-primary btnCalcular" onclick="javascript: Calcular();">Calcular</button>
+
+                </div>
+
+            </div><!-- /.nav-collapse -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"> TEST FINDRISK </div> <div class="panel-body">
+                <form id="frm" class="form-horizontal" role="form" action="javascript:Calcular()">
+                    <div class="form-group">
+                        <label for="Cedula" class="col-sm-2 control-label"> No. Documento:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control " name="Cedula" id="Cedula" value="" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Cedula" class="col-sm-2 control-label"> Nombre:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="NAME" id="NAME" value="" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> Edad:</label>
+                        <div class="col-sm-10  btn-group-vertical" >
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_A" id="m35" value="0" required />Menos de 35 Años
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_A" id="m45" value="1" />Entre 35 y 44 Años
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_A" id="E45_54" value="2" />Entre 45 y 54 Años
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_A" id="E55_64" value="3" />Entre 55 - 64 Años
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_A" id="M64" value="4" />Mas de 64 Años
+                            </label>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"> Indice de masa corporal </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="PP_B1" class="col-sm-2 control-label"> Peso (Kg):</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="PP_B1" id="PP_B1" value="" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="PP_B2" class="col-sm-2 control-label"> Altura (cm):</label>
+                                <div class="col-sm-10"> <input type="number" class="form-control" name="PP_B2" id="PP_B2" value="" required /></div>
+                            </div> <div class="form-group">
+                                <!-- <label for="PP_B" class="ui-input-text" > IMC (Kg/m2):</label > <input type="text" name="PP_B" id="PP_B" value="" readonly="readonly" / >-->
+                                <div data-role="header" style="text-align: center;">
+                                    <label id="MB"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> Perímetro de cintura medido por debajo de las costillas (normalmente a nivel del ombligo): </label>
+                        <div class="col-sm-10  btn-group-vertical" >
+                            <label class="btn btn-default">
+                                <input required type="radio" name="PP_C" id="C_uno" value="0" />(Mujeres) Menos de 80 cm. <br />(Hombres) Menos de 94 cm.
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_C" id="C_dos" value="3" />(Mujeres) Entre 80 y 88 cm. <br />(Hombres) Entre 94-102 cm.
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="PP_C" id="C_tres" value="4" />(Mujeres) Más de 88 cm. <br />(Hombres) Más de 102 cm.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> ¿Realiza habitualmente al menos 30 minutos de actividad física, en el trabajo y/o en el tiempo libre?: </label>
+                        <div class="col-sm-10 col-xs-12 btn-group" >
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input required type="radio" name="PP_D" id="D_uno" value="0" />Si
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_D" id="D_dos" value="2" />No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> ¿Con qué frecuencia come verduras o frutas?: </label>
+                        <div class="col-sm-10 col-xs-12 btn-group" >
+                            <label  class="col-sm-12 col-xs-12 btn btn-default">
+                                <input required type="radio" name="PP_E" id="E_uno" value="0" />Todos los dias
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_E" id="E_dos" value="1" />No todos los dias
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> ¿Toma medicación para la hipertensión regularmente?: </label>
+                        <div class="col-sm-10 col-xs-12 btn-group" >
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input required type="radio" name="PP_F" id="F_uno" value="0" />No
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_F" id="F_dos" value="2" />Si
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            ¿Le han encontrado alguna vez valores de glucosa altos (Ej. en un control médico, durante una enfermedad, durante
+                            el embarazo)?:
+                        </label>
+                        <div class="col-sm-10 col-xs-12 btn-group" >
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input required type="radio" name="PP_G" id="G_uno" value="0" />No
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_G" id="G_dos" value="5" />Si
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            ¿Se le ha diagnosticado diabetes (tipo 1 o tipo
+                            2) a alguno de sus familiares allegados u otros parientes?
+                        </label>
+                        <div class="col-sm-10 col-xs-12 btn-group" >
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input required type="radio" name="PP_H" id="H_uno" value="0" />No
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_H" id="H_dos" value="3" />  Sí: abuelos,
+                                tía, tío, primo hermano
+                            </label>
+                            <label class="col-sm-12 col-xs-12 btn btn-default">
+                                <input type="radio" name="PP_H" id="H_tres" value="5" />Sí: padres, hermanos o hijos
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="mail" class="col-sm-2 control-label"> Correo Electronico:</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" name="mail" id="mail" value="" required />
+                        </div>
+
+                    </div>
+
+                    <button  class="btn btn-default btnCalcular pull-left" role="button" onclick="GO(3);">CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btnCalcular pull-right" role="button">CALCULAR</button>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade cerrar" id="pop1" tabindex="-1" role="dialog" aria-labelledby="pop1Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="pop1Label">Riesgo Bajo</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="P1"></h2>
+                    <br /><br /> Su nivel de riesgo es muy bajo. En su caso no es necesario un cuidado especial o de prevención. Sin embargo no estaría mal cuidar de su alimentación y realizar suficiente ejercicio.
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade cerrar" id="pop2" tabindex="-1" role="dialog" aria-labelledby="pop2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="pop2Label">Riesgo Ligeramente elevado</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="P2"></h2>
+                    <br /><br />Para usted es recomendable un poco de cuidado, aunque el nivel de riesgo de contraer una diabetes no es muy alto. Si quiere ir sobre seguro, siga las siguientes reglas:<br />
+                    <ul>
+                        <li>
+                            En el caso de sobrepeso deberá intentar disminuir su peso en un 7 por ciento
+                        </li>
+                        <li>
+                            Manténgase en actividad, por lo menos, por media hora durante cinco días a la semana
+                        </li>
+                        <li>
+                            La grasa debería constituir,como máximo, sólo un 30 por ciento de su alimentación
+                        </li>
+                        <li>
+                            La parte de ácidos grasos no saturados (sobre todo en la grasa animal) no debería sobrepasar del 10 por
+                            ciento en su alimentación
+                        </li>
+                        <li>
+                            Consuma diariamente, por lo menos, 30 gramos de fibras vegetales (como las contenidas en productos integrales, verduras y frutas)
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade cerrar" id="pop3" tabindex="-1" role="dialog" aria-labelledby="pop3Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="pop3Label">Riesgo Moderado</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="P3"></h2>
+                    <br /><br /> Si usted se encuentra en este grupo de riesgo, no debería
+                    postergar, por ningún motivo, el tomar medidas preventivas.
+                    En este caso lo pueden ayudar consejos e instrucciones de
+                    expertos para cambiar su estilo de vida, los cuales puede
+                    aplicarlos usted mismo. Recurra a ayuda profesional si nota
+                    que de esa manera no se puede ayudar.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade cerrar" id="pop4" tabindex="-1" role="dialog" aria-labelledby="pop4Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="pop4Label">Riesgo Alto</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="P4"></h2>
+                    <br /><br /> Su nivel de riesgo es muy alto: una tercera parte de los pacientes que corresponden a este grupo de riesgo contraen diabetes en los próximos 10 años. El subestimar esta situación puede traer graves consecuencias. Lo mejor sería recurrir a ayuda profesional. Haga una prueba de glucemia (azúcar en la sangre) en una farmacia y vaya a hacerse exámenes médicos (checkup a partir de los 35).
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pop" tabindex="-1" role="dialog" aria-labelledby="popLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="popLabel">Espere un momento</h4>
+                </div>
+                <div class="modal-body" style="text-align:center">
+
+                    <img src="jquery.mobile/images/ajax-loader.gif" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript"> </script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript">
+        $('.cerrar').on('hidden.bs.modal', function (e) {
+            window.location = "Default.html";
+        })
+        function GO(opcion) {
+            switch (opcion) {
+                case 0:
+                    window.location = "RegPatient.html";
+                    break;
+                case 1:
+                    window.location = "GS.html";
+                    break;
+                case 2:
+                    window.location = "Peso.html";
+                    break;
+                case 3:
+                    window.location = "Default.html";
+                    break;
+            }
+        }
+        function Calcular(event) {
+            $('#pop').modal('show');
+            var btn = $(this)
+            btn.button('Calculando...');
+            var obj = new Object;
+            var A = parseFloat($(" input[name='PP_A']:checked").val());
+            var C = parseFloat($(" input[name='PP_C']:checked").val());
+            var D = parseFloat($(" input[name='PP_D']:checked").val());
+            var E = parseFloat($(" input[name='PP_E']:checked").val());
+            var F = parseFloat($(" input[name='PP_F']:checked").val());
+            var G = parseFloat($(" input[name='PP_G']:checked").val());
+            var H = parseFloat($(" input[name='PP_H']:checked").val());
+
+            var B1 = parseFloat($(" input[name='PP_B1']").val());
+            var B2 = parseFloat($(" input[name='PP_B2']").val()) / 100;
+            var B = B1 / (B2 * B2);
+
+            obj.FR_Edad = A;
+            obj.FR_Peso = B1;
+            obj.FR_Altura = B2;
+            obj.FR_IMC = B;
+            obj.FR_Cintura = C;
+            obj.FR_Ejercicio = D;
+            obj.FR_FrutiVer = E;
+            obj.FR_Medicacion = F;
+            obj.FR_Cliente = "congreso";
+            obj.FR_GlucosaH = G;
+            obj.FR_Familia = H;
+            obj.FR_Nombre = $(" input[name='NAME']").val();
+            obj.FR_Mail = $(" input[name='mail']").val();
+            obj.FR_Club = parseFloat($(" input[name='PC']:checked").val());;
+            obj.FR_Cedula = $(" input[name='Cedula']").val();
+
+            if (!isNaN(B)) {
+
+                $(" #PP_B").val(B);
+                var MB = "";
+                if (B < 18.5)
+                    MB = "Infrapeso";
+                else if (B > 18.5 && B < 25)
+                    MB = "Normal";
+                else if (B >= 25 && B < 30)
+                    MB = "Sobrepeso";
+                else
+                    MB = "Obeso";
+                $("#MB").text(MB);
+
+            }
+
+            if (B < 25)
+                B = 0;
+            else if (B >= 25 && B < 30)
+                B = 1;
+            else
+                B = 3;
+
+            var total = A + B + C + D + E + F + G + H;
+            var resultado = "Su riesgo es: ";
+            var popup = 0;
+            if (total < 7) {
+                resultado += "Bajo";
+                popup = "1";
+            }
+            else {
+                if (total >= 7 && total <= 11) {
+                    resultado += "Ligeramente elevado";
+                    popup = "2";
+                }
+                else {
+                    if (total >= 12 && total <= 14) {
+                        resultado += "Moderado";
+                        popup = "3";
+                    }
+                    else {
+                        if (total >= 15 && total <= 20) {
+                            resultado += "Alto";
+                            popup = "4";
+                        }
+                        else {
+                            if (total > 20) {
+                                resultado += "Muy Alto";
+                                popup = "5";
+                            }
+                        }
+                    }
+                }
+            }
+            var resIMC = "Resultado del IMC:" + MB + "";
+            obj.FR_Resultado = total;
+            $('#pop').modal('hide');
+            $('#pop' + popup).modal('show');
+            //$.ajax({
+            //    url: "http://track.diabetrics.co/FindRisk/RegisterMobileClient?callback=?",
+            //    //url: "http://localhost:2977/FindRisk/RegisterMobileClient?callback=?",
+            //    dataType: 'jsonp',
+            //    type: 'GET',
+            //    data: obj,
+            //    success: function (data, status, jqXHR) {
+            //       
+            //        if (data.Code == 0) {
+            //            $('#pop' + popup).modal('show');
+            //        } else {
+            //            alert(data.msg + ": " + resultado);
+            //        }
+            //    }
+            //});
+        }
+
+    </script>
+</body>
+</html>

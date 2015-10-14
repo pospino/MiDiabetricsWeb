@@ -1,0 +1,333 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Page</title>
+    <meta name="viewport"
+        content="width=device-width; height=device-height; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.3.2.min.css" />
+
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile/jquery.mobile-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript">
+        function GO(opcion) {
+            switch (opcion) {
+                case 0:
+                    window.location = "RegPatient.html";
+                    break;
+                case 1:
+                    window.location = "GS.html";
+                    break;
+                case 2:
+                    window.location = "Peso.html";
+                    break;
+                case 3:
+                    window.location = "index.html";
+                    break;
+            }
+        }
+        $(document).bind("mobileinit", function () {
+            // Make your jQuery Mobile framework configuration changes here!
+            $.mobile.allowCrossDomainPages = true;
+        });
+
+        jQuery.fn.reset = function () {
+            $(this).each(function () {
+                this.reset();
+            });
+        }
+        
+    </script>
+    <style type="text/css">
+        #myform {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        div.displayelem {
+            padding: 15px;
+        }
+
+        #thehead {
+            padding-bottom: 8px;
+        }
+
+        #pic {
+            padding-left: 15px;
+        }
+
+        .ui-icon-myapp-custom {
+            background: url("bitmap.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header" data-theme="b" data-position="fixed">
+            <a href="http://diabetrics.co" data-role="button" data-icon="myapp-custom">Diabetrics</a>
+            <h1>Diabetrics - DiabeTEST</h1>
+        </div>
+        <div data-role="content" class="ui-content" role="main">
+            <form action="#" method="get" id="H">
+              
+                <div data-role="fieldcontain">
+
+                    <div data-role="fieldcontain">
+                        <label for="NAME" class="ui-input-text">Nombre:</label>
+                        <input type="text" name="NAME" id="NAME" value="" />
+                    </div>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>Edad:</legend>
+                        <input type="radio" name="PP_A" id="m35" value="0" />
+                        <label for="m35">Menos de 35 Años</label>
+                        <input type="radio" name="PP_A" id="m45" value="1" />
+                        <label for="m45">Entre 35 y 44 Años</label>
+                        <input type="radio" name="PP_A" id="E45_54" value="2" />
+                        <label for="E45_54">Entre 45 y 54 Años</label>
+                        <input type="radio" name="PP_A" id="E55_64" value="3" />
+                        <label for="E55_64">Entre 55 - 64 Años</label>
+                        <input type="radio" name="PP_A" id="M64" value="4" />
+                        <label for="M64">Mas de 64 Años</label>
+                    </fieldset>
+                </div>
+
+                <div class="ui-body ui-body-b">
+                    <fieldset class="ui-grid-a">
+                        <legend>Indice de masa corporal</legend>
+                        <div data-role="fieldcontain">
+                            <label for="PP_B1">Peso (Kg):</label>
+                            <input type="number" name="PP_B1" id="PP_B1" value="" />
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label for="PP_B2">Altura (cm):</label>
+                            <input type="number" name="PP_B2" id="PP_B2" value="" />
+                        </div>
+                        <div data-role="fieldcontain">
+                            <!--<label for="PP_B" class="ui-input-text">IMC (Kg/m2):</label>
+                            <input type="text" name="PP_B" id="PP_B" value="" readonly="readonly" />-->
+                            <div data-role="header" style="text-align: center;">
+                                <label id="MB"></label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>Perímetro de cintura medido por debajo de las
+								costillas (normalmente a nivel del ombligo):
+                        </legend>
+
+                        <input type="radio" name="PP_C" id="C_uno" value="0" />
+                        <label for="C_uno">
+                            (Mujeres) Menos de 80 cm.
+								<br />
+                            (Hombres)
+								Menos de 94 cm.
+                        </label>
+                        <input type="radio" name="PP_C" id="C_dos" value="3" />
+                        <label for="C_dos">
+                            (Mujeres) Entre 80 y 88 cm.
+								<br />
+                            (Hombres)
+								Entre 94-102 cm.
+                        </label>
+                        <input type="radio" name="PP_C" id="C_tres" value="4" />
+                        <label for="C_tres">
+                            (Mujeres) Más de 88 cm.
+								<br />
+                            (Hombres)
+								Más de 102 cm.
+                        </label>
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Realiza habitualmente al menos 30 minutos de
+								actividad física, en el trabajo y/o en el tiempo libre?:
+                        </legend>
+
+                        <input type="radio" name="PP_D" id="D_uno" value="0" />
+                        <label for="D_uno">
+                            Si</label>
+                        <input type="radio" name="PP_D"
+                            id="D_dos" value="2" />
+                        <label for="D_dos">No</label>
+
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Con qué frecuencia come verduras o frutas?:
+                        </legend>
+
+                        <input type="radio" name="PP_E" id="E_uno" value="0" />
+                        <label
+                            for="E_uno">
+                            Todos los dias</label>
+                        <input type="radio"
+                            name="PP_E" id="E_dos" value="1" />
+                        <label for="E_dos">No todos los dias</label>
+
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Toma medicación para la hipertensión
+								regularmente?:
+                        </legend>
+
+                        <input type="radio" name="PP_F" id="F_uno" value="0" />
+                        <label
+                            for="F_uno">
+                            No</label>
+                        <input type="radio" name="PP_F"
+                            id="F_dos" value="2" />
+                        <label for="F_dos">Si</label>
+
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Le han encontrado alguna vez valores de glucosa
+								altos (Ej. en un control médico, durante una enfermedad, durante
+								el embarazo)?:
+                        </legend>
+
+                        <input type="radio" name="PP_G" id="G_uno" value="0" />
+                        <label
+                            for="G_uno">
+                            No</label>
+                        <input type="radio" name="PP_G"
+                            id="G_dos" value="5" />
+                        <label for="G_dos">Si</label>
+
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Se le ha diagnosticado diabetes (tipo 1 o tipo
+								2) a alguno de sus familiares allegados u otros parientes?
+                        </legend>
+
+                        <input type="radio" name="PP_H" id="H_uno" value="0" />
+                        <label
+                            for="H_uno">
+                            No</label>
+                        <input type="radio" name="PP_H"
+                            id="H_dos" value="3" />
+                        <label for="H_dos">
+                            Sí: abuelos,
+								tía, tío, primo hermano</label>
+                        <input type="radio" name="PP_H"
+                            id="H_tres" value="5" />
+                        <label for="H_tres">
+                            Sí:
+								padres, hermanos o hijos</label>
+
+                    </fieldset>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical">
+                        <legend>¿Desea pertenecer al club circulo de la vida?
+                        </legend>
+
+                        <input type="radio" name="PC" id="PC_S" value="0" />
+                        <label
+                            for="PC_S">
+                            Si</label>
+                        <input type="radio" name="PC"
+                            id="PC_N" value="3" />
+                        <label for="PC_N">
+                            No</label>
+
+                    </fieldset>
+                </div>
+               
+                <div data-role="footer" id="footer" data-theme="b" data-position="fixed" data-fullscreen="false" data-tap-toggle="false">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="javascript:Calcular('H')" data-transition="turn">Calcular</a></li>
+                            <li><a href="javascript:GO(3);" data-transition="turn">Cancelar</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- /footer -->
+    </div>
+
+    <div id="pop1" data-role="popup" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width: 400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Riesgo Bajo</h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h2 id="P1"></h2>
+           <br /><br /> Su nivel de riesgo es muy bajo. En su caso no es necesario un cuidado especial o de prevención. Sin embargo no estaría mal cuidar de su alimentación y realizar suficiente ejercicio.
+           
+        </div>
+    </div>
+    <div id="pop2" data-role="popup" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width: 400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Riesgo Ligeramente elevado</h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h2 id="P2"></h2>
+            <br /><br />Para usted es recomendable un poco de cuidado, aunque el nivel de riesgo de contraer una diabetes no es muy alto. Si quiere ir sobre seguro, siga las siguientes reglas:<br />
+            • En el caso de sobrepeso deberá intentar disminuir su peso en un 7 por ciento<br />
+            • Manténgase en actividad, por lo menos, por media hora durante cinco días a la semana<br />
+            • La grasa debería constituir,como máximo, sólo un 30 por ciento de su alimentación<br />
+            • La parte de ácidos grasos no saturados (sobre todo en la grasa animal) no debería sobrepasar del 10 por<br />
+            ciento en su alimentación
+• Consuma diariamente, por lo menos, 30 gramos de fibras vegetales (como las contenidas en productos integrales, verduras y frutas)<br />
+
+        </div>
+    </div>
+    <div id="pop3" data-role="popup" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width: 400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Riesgo Moderado</h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h2 id="P3"></h2>
+           <br /><br /> Si usted se encuentra en este grupo de riesgo, no debería
+postergar, por ningún motivo, el tomar medidas preventivas.
+En este caso lo pueden ayudar consejos e instrucciones de
+expertos para cambiar su estilo de vida, los cuales puede
+aplicarlos usted mismo. Recurra a ayuda profesional si nota
+que de esa manera no se puede ayudar.
+           
+        </div>
+    </div>
+    <div id="pop4" data-role="popup" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width: 400px;" class="ui-corner-all">
+        <div data-role="header" data-theme="a" class="ui-corner-top">
+            <h1>Riesgo Alto</h1>
+        </div>
+        <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+            <h2 id="P4"></h2>
+           <br /><br /> Su nivel de riesgo es muy alto: una tercera parte de los pacientes que corresponden a este grupo de riesgo contraen diabetes en los próximos 10 años. El subestimar esta situación puede traer graves consecuencias. Lo mejor sería recurrir a ayuda profesional. Haga una prueba de glucemia (azúcar en la sangre) en una farmacia y vaya a hacerse exámenes médicos (checkup a partir de los 35).
+           
+        </div>
+    </div>
+    <div id="pop5" data-role="popup" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width: 400px;" class="ui-corner-all">
+       
+    </div>
+
+
+
+
+</body>
+</html>
